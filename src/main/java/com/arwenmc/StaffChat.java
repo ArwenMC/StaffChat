@@ -25,7 +25,7 @@ public class StaffChat extends JavaPlugin {
     public void onEnable() {
         getLogger().info("StaffChat v" + pdfFile.getVersion() + " has been enabled.");
 
-        pluginManager.registerEvents(new StaffChatJoinQuit(), this);
+        pluginManager.registerEvents(new StaffChatJoinQuit(this), this);
     }
 
     @Override
