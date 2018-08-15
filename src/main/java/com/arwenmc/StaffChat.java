@@ -1,6 +1,8 @@
 package com.arwenmc;
 
+import com.arwenmc.commands.AdminChatCommand;
 import com.arwenmc.commands.ChatCommand;
+import com.arwenmc.commands.StaffChatCommand;
 import com.arwenmc.listeners.StaffChatJoinQuit;
 import com.arwenmc.util.ChannelType;
 import net.md_5.bungee.api.ChatColor;
@@ -45,6 +47,8 @@ public class StaffChat extends JavaPlugin {
         this.saveDefaultConfig();
 
         getCommand("chat").setTabCompleter(new ChatCommand(this));
+        getCommand("schat").setExecutor(new StaffChatCommand(this));
+        getCommand("achat").setExecutor(new AdminChatCommand(this));
     }
 
     @Override
