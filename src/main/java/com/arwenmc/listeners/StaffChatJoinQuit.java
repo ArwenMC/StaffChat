@@ -34,26 +34,11 @@ public class StaffChatJoinQuit implements Listener {
     public void onPlayerQuitEvent(PlayerQuitEvent event) {
         Player eventPlayer = event.getPlayer();
         UUID playerUUID = eventPlayer.getUniqueId();
-        if (event.getPlayer().hasPermission(plugin.scAdmin)) {
-            if (plugin.chatChannel.containsKey(playerUUID)) {
-                // remove to admin group
-                plugin.chatChannel.put(playerUUID, ChannelType.ADMIN)
-            }
-        } else if (event.getPlayer().hasPermission(plugin.scStaff)) {
-            if (plugin.admin.contains(playerUUID)) {
-                // remove to staff group
-                plugin.staff.add(playerUUID);
-            }
-        } else {
-            if (plugin.player.contains(playerUUID)) {
-                // remove to regular group
-                plugin.player.add(playerUUID);
-            }
+        // removes the uuid from either array list if it contains it.
+        if (plugin.admin.contains(plugin.admin)) {
+            plugin.admin.remove(playerUUID);
+        } else if (plugin.staff.contains(plugin.staff)) {
+            plugin.staff.remove(playerUUID);
         }
     }
-
-    public void addToGroup(Player player) {
-
-    }
-
 }
