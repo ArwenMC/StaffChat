@@ -14,4 +14,6 @@ public enum ChannelType {
     public String getChannel() {
         return this.channel;
     }
+
+    // TODO add method to get ChannelType and therefor channel from hashmap
 }
