@@ -34,7 +34,7 @@ public class StaffChatJoinQuit implements Listener {
 
     @EventHandler
     public void onPlayerQuitEvent(PlayerQuitEvent event) {
-        Player eventPlayer = event.getPlayer()
+        Player eventPlayer = event.getPlayer();
         UUID playerUUID = eventPlayer.getUniqueId();
         if (event.getPlayer().hasPermission("sc.admin")) {
             if (plugin.admin.contains(playerUUID)) {
