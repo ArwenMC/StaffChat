@@ -27,10 +27,16 @@ public class ChatCommand implements CommandExecutor, TabExecutor {
         } else {
             Player player = (Player) commandSender;
             if (player.hasPermission(plugin.scStaff) || player.hasPermission(plugin.scAdmin)) {
+                // either staff or admin
                 if (args.length == 0) {
                     player.sendMessage(ChatColor.RED + "You must specify a chat channel.");
+                    return false;
+                } else if (args.length == 1) {
+                    // successful amount of arguments.
+                } else {
+                    player.sendMessage(ChatColor.RED + "Too many arguments, please check your syntax");
+                    return false;
                 }
-                // either staff or admin
             } else {
                 commandSender.sendMessage(plugin.NO_PERMISSION);
                 return true;
