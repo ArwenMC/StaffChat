@@ -42,6 +42,8 @@ public class StaffChat extends JavaPlugin {
         pluginManager.addPermission(scAdmin);
         pluginManager.addPermission(scStaff);
 
+        this.saveDefaultConfig();
+
         getCommand("chat").setTabCompleter(new ChatCommand(this));
     }
 
