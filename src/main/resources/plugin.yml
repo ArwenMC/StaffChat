@@ -10,6 +10,8 @@ commands:
   achat:
     usage: /achat <message>
     description: Send a message to the admin channel
+    alias: [adminchat]
   schat:
     usage: /schat <message>
     description: Send a message to the staff channel
+    alias: [staffchat]
