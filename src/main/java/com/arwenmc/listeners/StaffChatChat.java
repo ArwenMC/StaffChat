@@ -8,7 +8,7 @@ public class StaffChatChat implements Listener {
 
     @EventHandler
     public void onPlayerChatEvent(AsyncPlayerChatEvent event) {
-        
+
     }
 
 }
