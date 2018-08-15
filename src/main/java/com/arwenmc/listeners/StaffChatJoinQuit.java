@@ -1,6 +1,7 @@
 package com.arwenmc.listeners;
 
 import com.arwenmc.StaffChat;
+import com.arwenmc.util.ChannelType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -20,15 +21,12 @@ public class StaffChatJoinQuit implements Listener {
     public void onPlayerJoinEvent(PlayerJoinEvent event) {
         Player eventPlayer = event.getPlayer();
         UUID playerUUID = eventPlayer.getUniqueId();
-        if (event.getPlayer().hasPermission(plugin.scAdmin)) {
-            // add to admin group
+        if (eventPlayer.hasPermission(plugin.scAdmin)) {
+            // add admin's UUID to ArrayList
             plugin.admin.add(playerUUID);
-        } else if (event.getPlayer().hasPermission(plugin.scStaff)) {
-            // add to staff group
+        } else if (eventPlayer.hasPermission(plugin.scStaff)) {
+            // add staff's UUID to ArrayList
             plugin.staff.add(playerUUID);
-        } else {
-            // add to regular group
-            plugin.player.add(playerUUID);
         }
     }
 
@@ -37,9 +35,9 @@ public class StaffChatJoinQuit implements Listener {
         Player eventPlayer = event.getPlayer();
         UUID playerUUID = eventPlayer.getUniqueId();
         if (event.getPlayer().hasPermission(plugin.scAdmin)) {
-            if (plugin.admin.contains(playerUUID)) {
+            if (plugin.chatChannel.containsKey(playerUUID)) {
                 // remove to admin group
-                plugin.admin.remove(playerUUID);
+                plugin.chatChannel.put(playerUUID, ChannelType.ADMIN)
             }
         } else if (event.getPlayer().hasPermission(plugin.scStaff)) {
             if (plugin.admin.contains(playerUUID)) {
@@ -52,6 +50,10 @@ public class StaffChatJoinQuit implements Listener {
                 plugin.player.add(playerUUID);
             }
         }
+    }
+
+    public void addToGroup(Player player) {
+
     }
 
 }
