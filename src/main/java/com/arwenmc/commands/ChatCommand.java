@@ -40,7 +40,7 @@ public class ChatCommand implements CommandExecutor, TabExecutor {
     }
 
     public List<String> onTabComplete(CommandSender commandSender, Command command, String label, String[] args) {
-        List<String> argOne = Arrays.asList("regular", "staff", "admin", "get");
+        List<String> argOne = Arrays.asList("admin", "get", "regular", "staff");
         List<String> listFinal = Lists.newArrayList();
 
         switch (args.length) {
