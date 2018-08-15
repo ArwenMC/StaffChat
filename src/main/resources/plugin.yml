@@ -7,3 +7,9 @@ commands:
   chat:
     usage: /chat <default/admin/staff>
     description: Switch your chat channel
+  achat:
+    usage: /achat <message>
+    description: Send a message to the admin channel
+  schat:
+    usage: /schat <message>
+    description: Send a message to the staff channel
