@@ -3,3 +3,7 @@ version: 1.0
 author: ArwenMC
 authors: ["Christopher Nethercott"]
 main: com.arwenmc.StaffChat
+commands:
+  chat:
+    usage: /chat <default/admin/staff>
+    description: Switch your chat channel

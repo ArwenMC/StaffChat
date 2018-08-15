@@ -2,7 +2,7 @@ package com.arwenmc.util;
 
 public enum ChannelType {
     ADMIN("admin"),
-    REGULAR("regular"),
+    DEFAULT("default"),
     STAFF("staff");
 
     private String channel;
