@@ -1,5 +1,6 @@
 package com.arwenmc;
 
+import com.arwenmc.commands.ChatCommand;
 import com.arwenmc.listeners.StaffChatJoinQuit;
 import org.bukkit.permissions.Permission;
 import org.bukkit.plugin.PluginDescriptionFile;
@@ -31,6 +32,8 @@ public class StaffChat extends JavaPlugin {
         pluginManager.registerEvents(new StaffChatJoinQuit(this), this);
         pluginManager.addPermission(scAdmin);
         pluginManager.addPermission(scStaff);
+
+        getCommand("chat").setExecutor(new ChatCommand(this));
     }
 
     @Override
