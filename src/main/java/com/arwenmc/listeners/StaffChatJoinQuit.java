@@ -6,10 +6,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-public class StaffChatJoinLeave implements Listener {
+public class StaffChatJoinQuit implements Listener {
 
     StaffChat plugin;
-    public StaffChatJoinLeave(StaffChat plugin) {
+    public StaffChatJoinQuit(StaffChat plugin) {
         this.plugin = plugin;
     }
 
