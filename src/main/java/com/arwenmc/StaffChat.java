@@ -18,6 +18,9 @@ public class StaffChat extends JavaPlugin {
     public ArrayList<UUID> staff = new ArrayList<UUID>();
     public ArrayList<UUID> player = new ArrayList<UUID>();
 
+    public ArrayList<UUID> inAdminChat = new ArrayList<UUID>();
+    public ArrayList<UUID> inStaffChat = new ArrayList<UUID>();
+
     public Permission scAdmin = new Permission("sc.admin");
     public Permission scStaff = new Permission("sc.staff");
 
