@@ -1,6 +1,7 @@
 package com.arwenmc.commands;
 
 import com.arwenmc.StaffChat;
+import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -24,14 +25,19 @@ public class AdminChatCommand implements CommandExecutor {
         } else {
             Player player = (Player) commandSender;
             if (player.hasPermission(plugin.scAdmin)) {
-                StringBuilder sb = new StringBuilder();
-                for (String s : args) {
-                    sb.append(s).append(" ");
+                if (args.length <= 0) {
+                    StringBuilder sb = new StringBuilder();
+                    for (String s : args) {
+                        sb.append(s).append(" ");
+                    }
+                    for (UUID admin : plugin.admin) {
+                        Bukkit.getPlayer(admin).sendMessage(sb.toString().trim());
+                    }
+                    return true;
+                } else {
+                    player.sendMessage(ChatColor.RED + "Not enough arguments.");
+                    return false;
                 }
-                for (UUID admin : plugin.admin) {
-                    Bukkit.getPlayer(admin).sendMessage(sb.toString().trim());
-                }
-                return true;
             } else {
                 player.sendMessage(plugin.NO_PERMISSION);
                 return true;
