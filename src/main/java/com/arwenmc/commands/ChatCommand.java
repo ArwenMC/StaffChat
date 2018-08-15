@@ -6,6 +6,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
+import org.bukkit.entity.Player;
 
 import java.util.Arrays;
 import java.util.List;
@@ -18,6 +19,18 @@ public class ChatCommand implements CommandExecutor, TabExecutor {
     }
 
     public boolean onCommand(CommandSender commandSender, Command command, String label, String[] args) {
+        if (!(commandSender instanceof Player)) {
+            commandSender.sendMessage(plugin.NOT_PLAYER);
+            return true;
+        } else {
+            Player player = (Player) commandSender;
+            if (player.hasPermission(plugin.scStaff) || player.hasPermission(plugin.scAdmin)) {
+                // either staff or admin
+            } else {
+                commandSender.sendMessage(plugin.NO_PERMISSION);
+                return true;
+            }
+        }
         return false;
     }
 
