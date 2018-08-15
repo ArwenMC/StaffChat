@@ -1,6 +1,6 @@
 package com.arwenmc;
 
-import com.arwenmc.listeners.StaffChatJoin;
+import com.arwenmc.listeners.StaffChatJoinLeave;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -21,7 +21,7 @@ public class StaffChat extends JavaPlugin {
     public void onEnable() {
         getLogger().info("StaffChat v" + pdfFile.getVersion() + " has been enabled.");
 
-        pluginManager.registerEvents(new StaffChatJoin(), this);
+        pluginManager.registerEvents(new StaffChatJoinLeave(), this);
     }
 
     @Override
