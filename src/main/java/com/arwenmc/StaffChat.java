@@ -1,6 +1,7 @@
 package com.arwenmc;
 
 import com.arwenmc.listeners.StaffChatJoinQuit;
+import org.bukkit.permissions.Permission;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -16,6 +17,9 @@ public class StaffChat extends JavaPlugin {
     public ArrayList<UUID> admin = new ArrayList<UUID>();
     public ArrayList<UUID> staff = new ArrayList<UUID>();
     public ArrayList<UUID> player = new ArrayList<UUID>();
+
+    public Permission scAdmin = new Permission("sc.admin");
+    public Permission scStaff = new Permission("sc.staff");
 
     @Override
     public void onEnable() {

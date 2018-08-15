@@ -20,10 +20,10 @@ public class StaffChatJoinQuit implements Listener {
     public void onPlayerJoinEvent(PlayerJoinEvent event) {
         Player eventPlayer = event.getPlayer();
         UUID playerUUID = eventPlayer.getUniqueId();
-        if (event.getPlayer().hasPermission("sc.admin")) {
+        if (event.getPlayer().hasPermission(plugin.scAdmin)) {
             // add to admin group
             plugin.admin.add(playerUUID);
-        } else if (event.getPlayer().hasPermission("sc.staff")) {
+        } else if (event.getPlayer().hasPermission(plugin.scStaff)) {
             // add to staff group
             plugin.staff.add(playerUUID);
         } else {
@@ -36,12 +36,12 @@ public class StaffChatJoinQuit implements Listener {
     public void onPlayerQuitEvent(PlayerQuitEvent event) {
         Player eventPlayer = event.getPlayer();
         UUID playerUUID = eventPlayer.getUniqueId();
-        if (event.getPlayer().hasPermission("sc.admin")) {
+        if (event.getPlayer().hasPermission(plugin.scAdmin)) {
             if (plugin.admin.contains(playerUUID)) {
                 // remove to admin group
                 plugin.admin.remove(playerUUID);
             }
-        } else if (event.getPlayer().hasPermission("sc.staff")) {
+        } else if (event.getPlayer().hasPermission(plugin.scStaff)) {
             if (plugin.admin.contains(playerUUID)) {
                 // remove to staff group
                 plugin.staff.add(playerUUID);
