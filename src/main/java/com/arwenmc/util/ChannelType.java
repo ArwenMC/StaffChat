@@ -1,12 +1,12 @@
 package com.arwenmc.util;
 
 public enum ChannelType {
-
     ADMIN("admin"),
-    STAFF("staff"),
-    REGULAR("regular");
+    REGULAR("regular"),
+    STAFF("staff");
 
     private String channel;
+
     ChannelType(String channel) {
         this.channel = channel;
     }
