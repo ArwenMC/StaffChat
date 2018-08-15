@@ -31,6 +31,7 @@ public class AdminChatCommand implements CommandExecutor {
                 for (UUID admin : plugin.admin) {
                     Bukkit.getPlayer(admin).sendMessage(sb.toString().trim());
                 }
+                return true;
             } else {
                 player.sendMessage(plugin.NO_PERMISSION);
                 return true;
