@@ -24,7 +24,8 @@ public class StaffChatJoinQuit implements Listener {
         if (eventPlayer.hasPermission(plugin.scAdmin)) {
             // add admin's UUID to ArrayList
             plugin.admin.add(playerUUID);
-        } else if (eventPlayer.hasPermission(plugin.scStaff)) {
+        }
+        if (eventPlayer.hasPermission(plugin.scStaff)) {
             // add staff's UUID to ArrayList
             plugin.staff.add(playerUUID);
         }
@@ -37,7 +38,8 @@ public class StaffChatJoinQuit implements Listener {
         // removes the uuid from either array list if it contains it.
         if (plugin.admin.contains(plugin.admin)) {
             plugin.admin.remove(playerUUID);
-        } else if (plugin.staff.contains(plugin.staff)) {
+        }
+        if (plugin.staff.contains(plugin.staff)) {
             plugin.staff.remove(playerUUID);
         }
     }
