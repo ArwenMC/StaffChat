@@ -1,6 +1,7 @@
 package com.arwenmc.commands;
 
 import com.arwenmc.StaffChat;
+import com.arwenmc.util.ChannelType;
 import com.google.common.collect.Lists;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.command.Command;
@@ -32,6 +33,16 @@ public class ChatCommand implements CommandExecutor, TabExecutor {
                     return false;
                 } else if (args.length == 1) {
                     // successful amount of arguments.
+                    switch (args[0]) {
+                        case "admin":
+                            addPlayerToGroup(player, ChannelType.ADMIN);
+                        case "staff":
+                            addPlayerToGroup(player, ChannelType.STAFF);
+                        case "default":
+                            addPlayerToGroup(player, ChannelType.DEFAULT);
+                        case "get":
+                            player.sendMessage(ChatColor.GREEN + "You are currently in the channel: "); // TODO actually get the channel status
+                    }
                 } else {
                     player.sendMessage(ChatColor.RED + "Too many arguments, please check your syntax");
                     return false;
@@ -45,7 +56,7 @@ public class ChatCommand implements CommandExecutor, TabExecutor {
     }
 
     public List<String> onTabComplete(CommandSender commandSender, Command command, String label, String[] args) {
-        List<String> argOne = Arrays.asList("admin", "get", "regular", "staff");
+        List<String> argOne = Arrays.asList("admin", "get", "default", "staff");
         List<String> listFinal = Lists.newArrayList();
 
         switch (args.length) {
@@ -56,5 +67,11 @@ public class ChatCommand implements CommandExecutor, TabExecutor {
                 return listFinal;
         }
         return null;
+    }
+
+    public void addPlayerToGroup(Player player, ChannelType channelType) {
+        if (player.hasPermission(plugin.scAdmin)) {
+
+        }
     }
 }
