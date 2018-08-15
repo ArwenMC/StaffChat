@@ -1,7 +1,6 @@
 package com.arwenmc.commands;
 
 import com.arwenmc.StaffChat;
-import com.arwenmc.util.ChannelType;
 import com.google.common.collect.Lists;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.command.Command;
