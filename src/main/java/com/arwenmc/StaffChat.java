@@ -2,6 +2,7 @@ package com.arwenmc;
 
 import com.arwenmc.commands.ChatCommand;
 import com.arwenmc.listeners.StaffChatJoinQuit;
+import net.md_5.bungee.api.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.permissions.Permission;
 import org.bukkit.plugin.PluginDescriptionFile;
@@ -28,9 +29,9 @@ public class StaffChat extends JavaPlugin {
     public Permission scAdmin = new Permission("sc.admin");
     public Permission scStaff = new Permission("sc.staff");
 
-    public String NOT_PLAYER = config.getString("general.not_player");
-    public String NO_PERMISSION = config.getString("general.no_permission");
-    
+    public String NOT_PLAYER = ChatColor.translateAlternateColorCodes('&', config.getString("general.not_player"));
+    public String NO_PERMISSION = ChatColor.translateAlternateColorCodes('&', config.getString("general.no_permission"));
+
     @Override
     public void onEnable() {
         getLogger().info("StaffChat v" + pdfFile.getVersion() + " has been enabled.");
