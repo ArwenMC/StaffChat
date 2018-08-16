@@ -51,14 +51,14 @@ public class StaffChat extends JavaPlugin {
         getCommand("achat").setExecutor(new AdminChatCommand(this)); // sends specific message to admin channel
         getCommand("staffchat").setExecutor(new CommandExecutor() {
             @Override
-            public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
+            public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
                 if (command.getName().equalsIgnoreCase("staffchat")) {
                     if (commandSender.hasPermission(scAdmin)) {
-                        if (strings.length == 0 || strings.length >= 2) {
+                        if (args.length == 0 || args.length >= 2) {
                             commandSender.sendMessage(ChatColor.RED + "Too many arguments, the correct syntax is: /staffchat dumpchannels");
                             return false;
                         } else {
-                            if (strings[0].equalsIgnoreCase("dumpchannels")) {
+                            if (args[0].equalsIgnoreCase("dumpchannels")) {
                                 commandSender.sendMessage("UUID, PlayerName (ifOnline), Channel");
                                 for (Map.Entry<UUID, ChannelType> entry : chatChannel.entrySet()) {
                                     commandSender.sendMessage(entry.getKey() + ", " + Bukkit.getPlayer(entry.getKey()) + ", " + entry.getValue().getChannel());
