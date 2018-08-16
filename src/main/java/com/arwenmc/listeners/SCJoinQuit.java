@@ -2,6 +2,7 @@ package com.arwenmc.listeners;
 
 import com.arwenmc.StaffChat;
 import com.arwenmc.util.ChannelType;
+import net.md_5.bungee.api.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -28,6 +29,10 @@ public class SCJoinQuit implements Listener {
             if (!(plugin.chatChannel.containsKey(playerUUID))) {
                 plugin.chatChannel.put(playerUUID, ChannelType.DEFAULT); // adds the player to the hashmap
             }
+        }
+
+        if (plugin.chatChannel.containsKey(playerUUID)) {
+            eventPlayer.sendMessage(ChatColor.GREEN + "Hey, you are set to talk on channel: " + plugin.chatChannel.get(playerUUID).getChannel());
         }
     }
 
