@@ -28,6 +28,7 @@ public class StaffChat extends JavaPlugin {
     public Permission scAdmin = new Permission("sc.admin");
     public Permission scStaff = new Permission("sc.staff");
 
+    public boolean KEEP_PLAYER_DATA = config.getBoolean("general.keep_player_data");
     public String NOT_PLAYER = ChatColor.translateAlternateColorCodes('&', config.getString("general.not_player"));
     public String NO_PERMISSION = ChatColor.translateAlternateColorCodes('&', config.getString("general.no_permission"));
 
