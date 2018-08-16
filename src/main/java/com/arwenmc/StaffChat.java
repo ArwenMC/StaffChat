@@ -19,9 +19,9 @@ import java.util.UUID;
 
 public class StaffChat extends JavaPlugin {
 
-    PluginDescriptionFile pdfFile = this.getDescription();
-    PluginManager pluginManager = this.getServer().getPluginManager();
-    FileConfiguration config = this.getConfig();
+    PluginDescriptionFile pdfFile = this.getDescription(); // gets information from plugin.yml
+    PluginManager pluginManager = this.getServer().getPluginManager(); // allows for events / permissions
+    FileConfiguration config = this.getConfig(); // gets information from config
 
     // Array List
     public ArrayList<UUID> admin = new ArrayList<UUID>();
