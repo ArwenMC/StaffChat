@@ -46,9 +46,9 @@ public class StaffChat extends JavaPlugin {
 
         this.saveDefaultConfig();
 
-        getCommand("chat").setTabCompleter(new ChatCommand(this));
-        getCommand("schat").setExecutor(new StaffChatCommand(this));
-        getCommand("achat").setExecutor(new AdminChatCommand(this));
+        getCommand("chat").setTabCompleter(new ChatCommand(this)); // switching channel command
+        getCommand("schat").setExecutor(new StaffChatCommand(this)); // sends specific message to staff channel
+        getCommand("achat").setExecutor(new AdminChatCommand(this)); // sends specific message to admin channel
     }
 
     @Override
