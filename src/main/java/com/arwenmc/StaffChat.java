@@ -3,7 +3,7 @@ package com.arwenmc;
 import com.arwenmc.commands.AdminChatCommand;
 import com.arwenmc.commands.ChatCommand;
 import com.arwenmc.commands.StaffChatCommand;
-import com.arwenmc.listeners.StaffChatJoinQuit;
+import com.arwenmc.listeners.SCJoinQuit;
 import com.arwenmc.util.ChannelType;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -40,7 +40,7 @@ public class StaffChat extends JavaPlugin {
     public void onEnable() {
         getLogger().info("StaffChat v" + pdfFile.getVersion() + " has been enabled.");
 
-        pluginManager.registerEvents(new StaffChatJoinQuit(this), this);
+        pluginManager.registerEvents(new SCJoinQuit(this), this);
         pluginManager.addPermission(scAdmin);
         pluginManager.addPermission(scStaff);
 

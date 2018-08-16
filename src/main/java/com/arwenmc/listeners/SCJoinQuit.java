@@ -10,10 +10,10 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 import java.util.UUID;
 
-public class StaffChatJoinQuit implements Listener {
+public class SCJoinQuit implements Listener {
 
     StaffChat plugin;
-    public StaffChatJoinQuit(StaffChat plugin) {
+    public SCJoinQuit(StaffChat plugin) {
         this.plugin = plugin;
     }
 
