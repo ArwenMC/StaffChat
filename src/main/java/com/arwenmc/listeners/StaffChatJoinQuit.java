@@ -37,14 +37,8 @@ public class StaffChatJoinQuit implements Listener {
         Player eventPlayer = event.getPlayer();
         UUID playerUUID = eventPlayer.getUniqueId();
         // removes the uuid from either array list if it contains it.
-        if (plugin.admin.contains(playerUUID)) {
-            plugin.admin.remove(playerUUID);
-        }
-        if (plugin.staff.contains(playerUUID)) {
-            plugin.staff.remove(playerUUID);
-        }
-        if (plugin.player.contains(playerUUID)) {
-            plugin.player.remove(playerUUID);
-        }
+        plugin.admin.remove(playerUUID);
+        plugin.staff.remove(playerUUID);
+        plugin.player.remove(playerUUID);
     }
 }
