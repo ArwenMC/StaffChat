@@ -26,10 +26,10 @@ public class SCJoinQuit implements Listener {
         plugin.chatChannel.put(playerUUID, ChannelType.DEFAULT); // adds the player to the default group, of course they could change this.
 
         if (plugin.chatChannel.containsKey(playerUUID)) {
-            if (!(plugin.KEEP_PLAYER_DATA)) {
+            if (!(plugin.KEEP_PLAYER_DATA)) { // so if we don't want to keep data we just reset it back to the default.
                 plugin.chatChannel.put(playerUUID, ChannelType.DEFAULT);
             }
-
+            // TODO add config option to send message to players on join
             eventPlayer.sendMessage(ChatColor.GREEN + "Hey, you are set to talk on channel: " + plugin.chatChannel.get(playerUUID).getChannel()); // sends player a message telling them which channel they are talking on
         }
     }
