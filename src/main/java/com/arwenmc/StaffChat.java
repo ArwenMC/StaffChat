@@ -54,6 +54,7 @@ public class StaffChat extends JavaPlugin {
     @Override
     public void onDisable() {
         getLogger().info("StaffChat v" + pdfFile.getVersion() + " has been disabled.");
+        this.saveConfig();
     }
 
 }
