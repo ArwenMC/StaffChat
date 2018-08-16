@@ -10,8 +10,11 @@ commands:
   achat:
     usage: /achat <message>
     description: Send a message to the admin channel
-    alias: [adminchat]
+    alias: [a]
   schat:
     usage: /schat <message>
     description: Send a message to the staff channel
-    alias: [staffchat]
+    alias: [s]
+  staffchat:
+    usage: /staffchat dumpchannels
+    description: Mainly for debugging prints all the players and what channel they are in.

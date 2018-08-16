@@ -6,6 +6,10 @@ import com.arwenmc.commands.StaffChatCommand;
 import com.arwenmc.listeners.SCJoinQuit;
 import com.arwenmc.util.ChannelType;
 import net.md_5.bungee.api.ChatColor;
+import org.bukkit.Bukkit;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.permissions.Permission;
 import org.bukkit.plugin.PluginDescriptionFile;
@@ -45,6 +49,34 @@ public class StaffChat extends JavaPlugin {
         getCommand("chat").setTabCompleter(new ChatCommand(this)); // switching channel command
         getCommand("schat").setExecutor(new StaffChatCommand(this)); // sends specific message to staff channel
         getCommand("achat").setExecutor(new AdminChatCommand(this)); // sends specific message to admin channel
+        getCommand("staffchat").setExecutor(new CommandExecutor() {
+            @Override
+            public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
+                if (command.getName().equalsIgnoreCase("staffchat")) {
+                    if (commandSender.hasPermission(scAdmin)) {
+                        if (strings.length == 0 || strings.length >= 2) {
+                            commandSender.sendMessage(ChatColor.RED + "Too many arguments, the correct syntax is: /staffchat dumpchannels");
+                            return false;
+                        } else {
+                            if (strings[0].equalsIgnoreCase("dumpchannels")) {
+                                commandSender.sendMessage("UUID, PlayerName (ifOnline), Channel");
+                                for (Map.Entry<UUID, ChannelType> entry : chatChannel.entrySet()) {
+                                    commandSender.sendMessage(entry.getKey() + ", " + Bukkit.getPlayer(entry.getKey()) + ", " + entry.getValue().getChannel());
+                                }
+                                return true;
+                            } else {
+                                commandSender.sendMessage(ChatColor.RED + "Too many arguments, the correct syntax is: /staffchat dumpchannels");
+                                return false;
+                            }
+                        }
+                    } else {
+                        commandSender.sendMessage(NO_PERMISSION);
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
     }
 
     @Override
