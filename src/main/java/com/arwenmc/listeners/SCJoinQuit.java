@@ -21,24 +21,15 @@ public class SCJoinQuit implements Listener {
     public void onPlayerJoinEvent(PlayerJoinEvent event) {
         Player eventPlayer = event.getPlayer();
         UUID playerUUID = eventPlayer.getUniqueId();
-        if (eventPlayer.hasPermission(plugin.scAdmin)) {
-            // add admin's UUID to ArrayList
-            plugin.admin.add(playerUUID);
-        }
-        if (eventPlayer.hasPermission(plugin.scStaff)) {
-            // add staff's UUID to ArrayList
-            plugin.staff.add(playerUUID);
-        }
-        plugin.player.add(playerUUID);
+
+        plugin.chatChannel.put(playerUUID, ChannelType.DEFAULT); // adds the player to the default group, of course they could change this.
     }
 
     @EventHandler
     public void onPlayerQuitEvent(PlayerQuitEvent event) {
         Player eventPlayer = event.getPlayer();
         UUID playerUUID = eventPlayer.getUniqueId();
-        // removes the uuid from either array list if it contains it.
-        plugin.admin.remove(playerUUID);
-        plugin.staff.remove(playerUUID);
-        plugin.player.remove(playerUUID);
+
+        plugin.chatChannel.remove(playerUUID); // removes the player from the hashmap as they have now disconnected
     }
 }
