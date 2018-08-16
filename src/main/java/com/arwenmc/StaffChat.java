@@ -49,7 +49,7 @@ public class StaffChat extends JavaPlugin {
         getCommand("chat").setTabCompleter(new ChatCommand(this)); // switching channel command
         getCommand("schat").setExecutor(new StaffChatCommand(this)); // sends specific message to staff channel
         getCommand("achat").setExecutor(new AdminChatCommand(this)); // sends specific message to admin channel
-        getCommand("staffchat").setExecutor(new CommandExecutor() {
+        getCommand("staffchat").setExecutor(new CommandExecutor() { // debug command only reload for developers <3
             @Override
             public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
                 if (command.getName().equalsIgnoreCase("staffchat")) {
