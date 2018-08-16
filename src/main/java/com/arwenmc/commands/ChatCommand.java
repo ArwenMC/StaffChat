@@ -4,6 +4,7 @@ import com.arwenmc.StaffChat;
 import com.arwenmc.util.ChannelType;
 import com.google.common.collect.Lists;
 import net.md_5.bungee.api.ChatColor;
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -41,7 +42,7 @@ public class ChatCommand implements CommandExecutor, TabExecutor {
                         case "default":
                             addPlayerToGroup(player, ChannelType.DEFAULT);
                         case "get":
-                            player.sendMessage(ChatColor.GREEN + "You are currently in the channel: "); // TODO actually get the channel status
+                            player.sendMessage(ChatColor.GREEN + "You are currently in the channel: " + plugin.chatChannel.get(player.getUniqueId()).getChannel()); // gets the pluginchannel
                     }
                 } else {
                     player.sendMessage(ChatColor.RED + "Too many arguments, please check your syntax");
@@ -70,8 +71,23 @@ public class ChatCommand implements CommandExecutor, TabExecutor {
     }
 
     public void addPlayerToGroup(Player player, ChannelType channelType) {
-        if (player.hasPermission(plugin.scAdmin)) {
+        if (!(plugin.chatChannel.get(player.getUniqueId()).equals(channelType))) {
+            if (channelType.equals(ChannelType.ADMIN)) {
+                if (player.hasPermission(plugin.scAdmin)) {
 
+                }
+            } else if (channelType.equals(ChannelType.STAFF)) {
+                if (player.hasPermission(plugin.scAdmin) || player.hasPermission(plugin.scStaff)) {
+
+                }
+            } else if (channelType.equals(ChannelType.DEFAULT)) {
+
+            } else {
+                Bukkit.getLogger().severe("Error when given channel. Channel given " + channelType + " was unknown.");
+                throw new IllegalArgumentException("Error when given channel. Channel given " + channelType + " was unknown.");
+            }
+        } else {
+            player.sendMessage(ChatColor.GREEN + "You are already in the channel: " + channelType.getChannel());
         }
     }
 }
