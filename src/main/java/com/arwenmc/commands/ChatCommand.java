@@ -74,6 +74,8 @@ public class ChatCommand implements CommandExecutor, TabExecutor {
         if (!(plugin.chatChannel.get(player.getUniqueId()).equals(channelType))) {
             if (channelType.equals(ChannelType.ADMIN)) {
                 if (player.hasPermission(plugin.scAdmin)) {
+                    plugin.chatChannel.put(player.getUniqueId(), ChannelType.ADMIN);
+                } else {
 
                 }
             } else if (channelType.equals(ChannelType.STAFF)) {

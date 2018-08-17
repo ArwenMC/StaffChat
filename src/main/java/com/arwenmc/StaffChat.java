@@ -27,7 +27,7 @@ public class StaffChat extends JavaPlugin {
     PluginManager pluginManager = this.getServer().getPluginManager(); // allows for events / permissions
     FileConfiguration config = this.getConfig(); // gets information from config
 
-    public Map<UUID, ChannelType> chatChannel = new HashMap<UUID, ChannelType>();
+    public Map<UUID, ChannelType> chatChannel = new HashMap<UUID, ChannelType>(); // usings UUIDs rather than Player because UUIDs don't change
 
     public Permission scAdmin = new Permission("sc.admin");
     public Permission scStaff = new Permission("sc.staff");
