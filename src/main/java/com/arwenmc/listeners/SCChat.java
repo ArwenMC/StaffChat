@@ -10,7 +10,12 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 
 import java.util.UUID;
 
-public class SCListener implements Listener {
+public class SCChat implements Listener {
+
+    StaffChat plugin;
+    public SCChat(StaffChat plugin) {
+        this.plugin = plugin;
+    }
 
     @EventHandler
     public void onPlayerChatEvent(AsyncPlayerChatEvent event) {
