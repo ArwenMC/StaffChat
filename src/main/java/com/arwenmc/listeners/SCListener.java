@@ -17,12 +17,7 @@ public class SCListener implements Listener {
         ChannelType type = new StaffChat().chatChannel.get(event.getPlayer().getUniqueId());
 
         if (type.equals(ChannelType.ADMIN)) {
-            for (UUID uuid : new StaffChat().player) {
-                event.getRecipients().remove(Bukkit.getPlayer(uuid));
-            }
-            for (UUID uuid : new StaffChat().admin) {
-                event.getRecipients().add(Bukkit.getPlayer(uuid));
-            }
+            // TODO update to hashmap
         }
     }
 
