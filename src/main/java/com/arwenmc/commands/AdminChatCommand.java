@@ -1,6 +1,7 @@
 package com.arwenmc.commands;
 
 import com.arwenmc.StaffChat;
+import com.arwenmc.util.ChannelType;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -8,6 +9,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.HashMap;
 import java.util.UUID;
 
 public class AdminChatCommand implements CommandExecutor {
@@ -30,9 +32,7 @@ public class AdminChatCommand implements CommandExecutor {
                     for (String s : args) {
                         sb.append(s).append(" ");
                     }
-                    for (UUID admin : plugin.admin) {
-                        Bukkit.getPlayer(admin).sendMessage(sb.toString().trim());
-                    }
+                    // TODO update this to use the hashmap
                     return true;
                 } else {
                     player.sendMessage(ChatColor.RED + "Not enough arguments.");
