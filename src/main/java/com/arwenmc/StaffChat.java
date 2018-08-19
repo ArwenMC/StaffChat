@@ -6,17 +6,21 @@ import com.arwenmc.commands.StaffChatCommand;
 import com.arwenmc.listeners.SCChat;
 import com.arwenmc.listeners.SCJoinQuit;
 import com.arwenmc.util.ChannelType;
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.permissions.Permission;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -85,6 +89,14 @@ public class StaffChat extends JavaPlugin {
     public void onDisable() {
         getLogger().info("StaffChat v" + pdfFile.getVersion() + " has been disabled.");
         this.saveConfig();
+    }
+
+    public void sendMessageGroup(ChannelType group) {
+        Multimap<UUID, ChannelType> multimap = HashMultimap.create();
+
+        for (Map.Entry<UUID, ChannelType> entry : chatChannel.entrySet()) {
+            multimap.put(entry.getKey(), entry.getValue());
+        }
     }
 
 }
